@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --honey: #ffd34e;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  background-color: #fbcfe8;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8D%AF%3C/text%3E%3C/svg%3E")
+      4 4,
+    auto;
+}
+
+/* The repeating emoji wallpaper used behind the hero */
+.cringe-wallpaper {
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(circle at 80% 70%, rgba(255, 211, 78, 0.35), transparent 40%);
+}
+
+/* Floating CSS heart used in the museum hover swarm */
+.floating-heart {
+  position: absolute;
+  font-size: 1.6rem;
+  pointer-events: none;
+  user-select: none;
+  animation: heartFloat 1.3s ease-out forwards;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) scale(0.4) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-180px) scale(1.6) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+/* Masonry-ish columns for the gallery */
+.museum-masonry {
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+@media (min-width: 640px) {
+  .museum-masonry {
+    column-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .museum-masonry {
+    column-count: 3;
+  }
+}
+.museum-masonry > * {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+
+/* Global falling emoji rain */
+@keyframes heart-rain {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(115vh) rotate(360deg);
+    opacity: 0.9;
+  }
+}
+
+/* Cursor trail bloom */
+@keyframes trail-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -120%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Scrolling compliment marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-heart,
+  [style*="heart-rain"],
+  [style*="trail-pop"] {
+    animation: none !important;
+  }
+}
+
+/* Hero animated gradient background */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Emojis orbiting the hero photo frame */
+@keyframes spin-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="spin-orbit"],
+  [style*="gradient-shift"] {
+    animation: none !important;
+  }
+}
+
+/* A heart-shaped clip for the hero photo frame */
+.heart-shape {
+  clip-path: path(
+    "M50,88 C50,88 6,55 6,30 C6,15 18,8 28,8 C38,8 46,16 50,24 C54,16 62,8 72,8 C82,8 94,15 94,30 C94,55 50,88 50,88 Z"
+  );
+}
