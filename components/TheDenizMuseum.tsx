@@ -5,20 +5,37 @@ import { motion } from "framer-motion";
 
 type Photo = {
   caption: string;
-  emoji: string;
+  src: string;
 };
 
-const PHOTOS: Photo[] = [
-  { caption: "Bu gülüşe ömrümü veririm...", emoji: "😁" },
-  { caption: "Karanlık dünyamın güneşi...", emoji: "🌞" },
-  { caption: "Kaslı ballı turtam...", emoji: "💪" },
-  { caption: "Sabah uyandığında ilk aklıma gelen...", emoji: "🥱" },
-  { caption: "Bir bakışın yetiyor turtam...", emoji: "👀" },
-  { caption: "Protein shake'in kadar tatlısın...", emoji: "🥤" },
-  { caption: "Kaşların kaderim oldu...", emoji: "🫠" },
-  { caption: "Sen benim PR'ımsın (kişisel rekorum)...", emoji: "🏋️" },
-  { caption: "Saçların rüzgarda... ah turtam...", emoji: "💇" },
+const CAPTIONS = [
+  "Bu gülüşe ömrümü veririm...",
+  "Karanlık dünyamın güneşi...",
+  "Kaslı ballı turtam...",
+  "Sabah uyandığında ilk aklıma gelen...",
+  "Bir bakışın yetiyor turtam...",
+  "Protein shake'in kadar tatlısın...",
+  "Kaşların kaderim oldu...",
+  "Sen benim PR'ımsın (kişisel rekorum)...",
+  "Saçların rüzgarda... ah turtam...",
+  "Bu açıyı kim çekti, ödül versinler 📸",
+  "Gözlerine bakınca bal akıyor 🍯",
+  "Efsane duruş, efsane turta 💪",
+  "Bu kareye bakınca kalbim hop ediyor 💗",
+  "Dünyalar senin olsun biriciğim 🌍",
+  "Sen gülünce bahar geliyor 🌸",
+  "Bu pozun afiş olmalı turtam 🪧",
+  "Tatlılıktan dişim ağrıdı 🦷",
+  "Kalbimin tek motivasyonu sensin 🏋️",
+  "İşte benim 21'lik efsanem 🎂",
+  "Seninle her kare bir mucize ✨",
 ];
+
+// 20 photos dropped into /public, each paired with a cringe caption.
+const PHOTOS: Photo[] = Array.from({ length: 20 }, (_, i) => ({
+  src: `/deniz-${String(i + 1).padStart(2, "0")}.jpeg`,
+  caption: CAPTIONS[i % CAPTIONS.length],
+}));
 
 // One photo tile: spins 360° on hover and erupts a swarm of floating hearts.
 function MuseumCard({ photo, index }: { photo: Photo; index: number }) {
@@ -56,11 +73,14 @@ function MuseumCard({ photo, index }: { photo: Photo; index: number }) {
         </span>
       ))}
 
-      <div
-        className="flex aspect-[3/4] items-center justify-center rounded-2xl bg-gradient-to-br from-rose-100 to-fuchsia-200 text-7xl"
-        style={{ minHeight: 180 + (index % 3) * 60 }}
-      >
-        {photo.emoji}
+      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-rose-100 to-fuchsia-200">
+        <img
+          src={photo.src}
+          alt={photo.caption}
+          loading="lazy"
+          className="w-full rounded-2xl object-cover"
+          style={{ minHeight: 180 + (index % 3) * 60 }}
+        />
       </div>
       <p className="mt-3 text-center font-script text-2xl font-bold text-crimson">
         {photo.caption}

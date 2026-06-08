@@ -173,18 +173,12 @@ export default function CringeHero() {
         >
           {/* glowing aura */}
           <div className="absolute -inset-6 -z-10 animate-pulse rounded-full bg-fuchsia-400/50 blur-2xl" />
-          <div className="heart-shape flex h-72 w-72 items-center justify-center bg-gradient-to-br from-rose-300 via-pink-300 to-fuchsia-400 shadow-2xl ring-8 ring-white/70">
-            <div className="px-6 text-center font-comic text-base font-bold text-white drop-shadow">
-              📸
-              <br />
-              Deniz'in EN utanç verici
-              <br />
-              fotoğrafı buraya
-              <br />
-              <span className="text-sm opacity-90">
-                (deniz.jpg dosyasını /public içine koy)
-              </span>
-            </div>
+          <div className="heart-shape h-72 w-72 bg-gradient-to-br from-rose-300 via-pink-300 to-fuchsia-400 shadow-2xl ring-8 ring-white/70">
+            <img
+              src="/deniz-01.jpeg"
+              alt="Biricik Ballı Turtam Deniz"
+              className="h-full w-full object-cover"
+            />
           </div>
         </motion.div>
       </div>
