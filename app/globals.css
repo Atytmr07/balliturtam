@@ -155,9 +155,16 @@ body {
   }
 }
 
-/* A heart-shaped clip for the hero photo frame */
+/* A heart-shaped mask for the hero photo frame.
+   Uses an SVG mask (not clip-path: path()) so it scales to fill the box
+   at any size instead of being pinned to fixed pixel coordinates. */
 .heart-shape {
-  clip-path: path(
-    "M50,88 C50,88 6,55 6,30 C6,15 18,8 28,8 C38,8 46,16 50,24 C54,16 62,8 72,8 C82,8 94,15 94,30 C94,55 50,88 50,88 Z"
-  );
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 90 C 15 65 0 45 0 27 C 0 11 13 0 27 0 C 38 0 47 7 50 16 C 53 7 62 0 73 0 C 87 0 100 11 100 27 C 100 45 85 65 50 90 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 90 C 15 65 0 45 0 27 C 0 11 13 0 27 0 C 38 0 47 7 50 16 C 53 7 62 0 73 0 C 87 0 100 11 100 27 C 100 45 85 65 50 90 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  mask-position: center;
 }

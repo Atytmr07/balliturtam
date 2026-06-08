@@ -42,7 +42,7 @@ function MuseumCard({ photo, index }: { photo: Photo; index: number }) {
   const [hearts, setHearts] = useState<number[]>([]);
 
   const erupt = () => {
-    const batch = Array.from({ length: 10 }, (_, i) => Date.now() + i);
+    const batch = Array.from({ length: 4 }, (_, i) => Date.now() + i);
     setHearts((h) => [...h, ...batch]);
     // clean them up after they float away
     window.setTimeout(() => {
@@ -55,8 +55,8 @@ function MuseumCard({ photo, index }: { photo: Photo; index: number }) {
   return (
     <motion.div
       onHoverStart={erupt}
-      whileHover={{ rotate: 360 }}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
+      whileHover={{ scale: 1.03, y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
       className="relative rounded-3xl border-4 border-pink-300 bg-white p-3 shadow-[0_10px_30px_rgba(244,114,182,0.5)]"
     >
       {/* erupting hearts */}
@@ -96,8 +96,8 @@ export default function TheDenizMuseum() {
         Seninle Geçen 21 Yıllık Mucize ✨
       </h2>
       <p className="mx-auto mb-14 max-w-2xl text-center font-comic text-lg font-bold text-fuchsia-700">
-        (Üstüne gel ki kalbim gibi etrafına kalpler saçılsın ve fotoğrafın aşktan
-        kendi etrafında dönsün, tıpkı dünyam senin etrafında döndüğü gibi 🥺)
+        (Üstüne gel ki kalbim gibi etrafına minik kalpler saçılsın, tıpkı seni
+        her gördüğümde içimin kıpır kıpır olduğu gibi 🥺)
       </p>
 
       <div className="museum-masonry mx-auto max-w-6xl">

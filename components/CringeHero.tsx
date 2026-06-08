@@ -173,7 +173,7 @@ export default function CringeHero() {
         >
           {/* glowing aura */}
           <div className="absolute -inset-6 -z-10 animate-pulse rounded-full bg-fuchsia-400/50 blur-2xl" />
-          <div className="heart-shape h-72 w-72 bg-gradient-to-br from-rose-300 via-pink-300 to-fuchsia-400 shadow-2xl ring-8 ring-white/70">
+          <div className="heart-shape h-72 w-72 bg-rose-300 sm:h-80 sm:w-80">
             <img
               src="/deniz-01.jpeg"
               alt="Biricik Ballı Turtam Deniz"
