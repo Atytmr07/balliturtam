@@ -23,16 +23,14 @@ const CAPTIONS = [
   "Efsane duruş, efsane turta 💪",
   "Bu kareye bakınca kalbim hop ediyor 💗",
   "Dünyalar senin olsun biriciğim 🌍",
-  "Sen gülünce bahar geliyor 🌸",
-  "Bu pozun afiş olmalı turtam 🪧",
   "Tatlılıktan dişim ağrıdı 🦷",
   "Kalbimin tek motivasyonu sensin 🏋️",
   "İşte benim 21'lik efsanem 🎂",
   "Seninle her kare bir mucize ✨",
 ];
 
-// 20 photos dropped into /public, each paired with a cringe caption.
-const PHOTOS: Photo[] = Array.from({ length: 20 }, (_, i) => ({
+// 18 photos dropped into /public, each paired with a cringe caption.
+const PHOTOS: Photo[] = Array.from({ length: 18 }, (_, i) => ({
   src: `/deniz-${String(i + 1).padStart(2, "0")}.jpeg`,
   caption: CAPTIONS[i % CAPTIONS.length],
 }));
